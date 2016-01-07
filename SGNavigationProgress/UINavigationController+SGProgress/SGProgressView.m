@@ -34,10 +34,10 @@
 	if (self = [super initWithFrame:frame]) {
 		self.frame = frame;
 		self.clipsToBounds = YES;
-		self.backgroundColor = [UIColor clearColor];
-		self.tintAdjustmentMode = UIViewTintAdjustmentModeNormal;
+        self.backgroundColor = [self colorWithHexString:@"B6B6B6" alpha:1.0];
+        self.tintAdjustmentMode = UIViewTintAdjustmentModeNormal;
 		self.progressBar = [[UIView alloc] init];
-		self.progressBar.backgroundColor = self.tintColor;
+        self.progressBar.backgroundColor = [self colorWithHexString:@"E91E63" alpha:1.0];
 		self.progress = 0;
 		[self addSubview:self.progressBar];
 	}
@@ -62,5 +62,19 @@
 	[super setTintColor:tintColor];
 	self.progressBar.backgroundColor = tintColor;
 }
+
+
+#pragma mark - Private
+
+- (id)colorWithHexString:(NSString *)hex alpha:(CGFloat)a {
+    NSScanner *colorScanner = [NSScanner scannerWithString:hex];
+    unsigned int color;
+    if (![colorScanner scanHexInt:&color]) return nil;
+    CGFloat r = ((color & 0xFF0000) >> 16)/255.0f;
+    CGFloat g = ((color & 0x00FF00) >> 8) /255.0f;
+    CGFloat b =  (color & 0x0000FF) /255.0f;
+    return [UIColor colorWithRed:r green:g blue:b alpha:a];
+}
+
 
 @end
