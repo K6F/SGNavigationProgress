@@ -47,7 +47,7 @@
 - (void)setFrame:(CGRect)frame
 {
 	// 0.5 pt doesn't work well with autoresizingMask.
-	frame.origin.y = ceilf(frame.origin.y);
+    frame.origin.y = frame.origin.y + 2;
     frame.size.height = 2;
 	[super setFrame:frame];
 
