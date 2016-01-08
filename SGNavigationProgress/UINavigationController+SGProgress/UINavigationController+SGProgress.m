@@ -258,6 +258,15 @@ CGFloat const SGProgressBarHeight = 2.5;
 	}];
 }
 
+- (void)dismissSGProgress
+{
+    SGProgressView *progressView = [self progressView];
+    [self removeSGMask];
+    [self resetTitle];
+    progressView.alpha = 0;
+    [progressView removeFromSuperview];
+}
+
 - (void)setSGProgressPercentage:(float)percentage
 {
 	SGProgressView *progressView = [self progressView];

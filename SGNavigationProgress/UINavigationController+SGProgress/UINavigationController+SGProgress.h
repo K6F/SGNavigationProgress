@@ -22,6 +22,7 @@
 
 - (void)finishSGProgress;
 - (void)cancelSGProgress;
+- (void)dismissSGProgress;
 
 - (void)setSGProgressPercentage:(float)percentage;
 - (void)setSGProgressPercentage:(float)percentage andTitle:(NSString *)title;
