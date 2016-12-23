@@ -15,7 +15,7 @@
 @implementation SGProgressView
 
 - (void)setProgress:(float)progress {
-	_progress = (progress < 0) ? 0 :
+	_progress = (isnan(_progress) || progress < 0) ? 0 :
 				(progress > 1) ? 1 :
 				progress;
 
